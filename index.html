@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>Empiric Labs: B2B Document Automation with Claude + Python</title>
+  <meta name="description" content="Claude Master Prompts and Python scripts that turn raw data into corporate .docx documents in seconds. Powered by Empiric Photon.">
+  <meta name="application-name" content="Empiric Labs">
+  <meta name="apple-mobile-web-app-title" content="Empiric Labs">
+  <meta name="author" content="Empiric Photon">
+  <meta name="theme-color" content="#04060B">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Empiric Labs">
+  <meta property="og:title" content="Empiric Labs: B2B Document Automation with Claude + Python">
+  <meta property="og:description" content="Claude Master Prompts and Python scripts that turn raw data into corporate .docx documents in seconds. Powered by Empiric Photon.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@Empiricphoton">
+  <meta name="twitter:title" content="Empiric Labs: B2B Document Automation with Claude + Python">
+  <meta name="twitter:description" content="Claude Master Prompts and Python scripts that turn raw data into corporate .docx documents in seconds. Powered by Empiric Photon.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"#empiric-labs","name":"Empiric Labs","alternateName":"Empiric Photon","description":"Claude Master Prompts and Python scripts that turn raw data into corporate .docx documents in seconds. Powered by Empiric Photon.","email":"empiricphoton@gmail.com","sameAs":["https://x.com/Empiricphoton","https://empiricphoton.gumroad.com/"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"empiricphoton@gmail.com","availableLanguage":["English","Spanish","Japanese"]}},{"@type":"WebSite","name":"Empiric Labs","description":"Claude Master Prompts and Python scripts that turn raw data into corporate .docx documents in seconds. Powered by Empiric Photon.","inLanguage":["en","es","ja"],"publisher":{"@id":"#empiric-labs"}}]}</script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+
+  <!-- First paint: show the right view and keep the page hidden until fonts and styles are ready. -->
+  <script>
+    /* Router bootstrap: show the right view from the very first paint (no flash of other pages). */
+    (function () {
+      var R = ['home', 'how-it-works', 'kits', 'documents', 'playground', 'roi', 'blog'], h = location.hash, v = 'home', m = h.match(/^#\/([\w-]*)/);
+      if (m && R.indexOf(m[1]) > -1) { v = m[1]; } else if (h.length > 1 && R.indexOf(h.slice(1)) > -1) { v = h.slice(1); }
+      document.documentElement.setAttribute('data-route', v);
+    })();
+    /* Progressive reveal: hide [data-rv] blocks only if the reveal script ends up running (failsafe below). */
+    document.documentElement.classList.add('js-reveal');
+    /* Load guard: keep the page hidden (and animations paused) until fonts + Tailwind are ready; failsafe after 2.5 s. */
+    document.documentElement.classList.add('fouc-guard');
+    window.__markReady = function () {
+      var d = document.documentElement;
+      if (d.classList.contains('is-ready')) { return; }
+      d.classList.add('is-ready');
+      document.dispatchEvent(new Event('elready'));
+    };
+    setTimeout(window.__markReady, 2500);
+    setTimeout(function () { if (!window.__revealOK) { document.documentElement.classList.remove('js-reveal'); } }, 3500);
+  
+  </script>
+</head>
+<body class="min-h-screen font-sans antialiased selection:bg-cyan-neon selection:text-ink">
+  <noscript><p style="margin:0;padding:1rem;font:15px/1.5 system-ui,sans-serif;background:#04060B;color:#E8ECF5">Empiric Labs needs JavaScript to display this site. You can still reach us at <a href="mailto:empiricphoton@gmail.com" style="color:#00F2FE">empiricphoton@gmail.com</a>.</p></noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
