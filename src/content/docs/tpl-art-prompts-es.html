@@ -1,0 +1,40 @@
+    <p class="meta">Publicado el 6 de octubre de 2026. Lectura: 8 minutos.</p>
+    <p>Cuando la respuesta de una IA tiene que alimentar un script o un documento, la prosa libre es un problema. Un Master Prompt bien estructurado convierte a Claude en una pieza predecible de tu flujo de trabajo.</p>
+
+    <h3>1. Define el rol y la tarea en una frase</h3>
+    <p>Empieza por lo esencial: quién es el modelo y qué debe producir. Una instrucción corta y concreta rinde más que un párrafo ambiguo.</p>
+
+    <h3>2. Declara el esquema de salida</h3>
+    <p>Describe cada campo, su tipo y los valores permitidos, e indica cuáles son obligatorios.</p>
+<pre>Eres un analista de contratos. Extrae los datos del texto
+dentro de &lt;datos&gt; y responde SOLO con JSON válido:
+
+{
+  "resumen": "string, máximo 40 palabras",
+  "puntos": ["string", "..."],
+  "riesgo": "alto | medio | bajo"
+}</pre>
+
+    <div class="ad-wrap"><p class="ad-label">Publicidad</p><div class="ad-slot ad-slot--inline" data-ad-slot="article-inline" data-ad-format="in-article 336x280"><span class="ad-ph">Espacio publicitario<small>Anuncio dentro del artículo, 336 × 280</small></span><!-- ADSENSE: bloque in-article --></div></div>
+
+    <h3>3. Separa instrucciones y datos con etiquetas</h3>
+    <p>Envuelve el contenido a procesar en etiquetas como <code class="inline">&lt;datos&gt;</code>. Así Claude distingue lo que debe obedecer de lo que debe analizar, y reduces errores cuando el texto de entrada contiene frases que parecen órdenes.</p>
+
+    <h3>4. Añade un ejemplo</h3>
+    <p>Un ejemplo completo de entrada y salida fija el formato mejor que cualquier descripción. Incluye uno que cubra un caso normal y, si puedes, otro con datos incompletos.</p>
+
+    <h3>5. Valida con Python y reintenta</h3>
+    <p>Nunca des por buena la respuesta sin comprobarla. Parsea el JSON, verifica los campos y, si falla, devuelve el error a Claude para que lo corrija.</p>
+<pre>import json
+
+def parsear(respuesta: str) -> dict:
+    datos = json.loads(respuesta)
+    faltan = {"resumen", "puntos", "riesgo"} - datos.keys()
+    if faltan:
+        raise ValueError(f"Faltan campos: {faltan}")
+    return datos</pre>
+    <p>Limita los reintentos a dos o tres. Si el prompt está bien diseñado, casi todas las respuestas pasarán a la primera.</p>
+
+    <h3>En resumen</h3>
+    <p>Rol claro, esquema explícito, datos separados, un ejemplo y validación en código. Con esas cinco piezas, la salida de Claude deja de ser texto y pasa a ser un dato en el que puedes confiar.</p>
+  

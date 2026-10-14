@@ -1,0 +1,40 @@
+    <p class="meta">Published October 6, 2026. Reading time: 8 minutes.</p>
+    <p>When an AI response has to feed a script or a document, free-form prose is a problem. A well-structured Master Prompt turns Claude into a predictable component of your workflow.</p>
+
+    <h3>1. Define the role and the task in one sentence</h3>
+    <p>Start with the essentials: who the model is and what it must produce. A short, concrete instruction outperforms an ambiguous paragraph.</p>
+
+    <h3>2. Declare the output schema</h3>
+    <p>Describe each field, its type and the allowed values, and state which ones are required.</p>
+<pre data-no-i18n>You are a contract analyst. Extract the data from the text
+inside &lt;data&gt; and reply ONLY with valid JSON:
+
+{
+  "summary": "string, maximum 40 words",
+  "key_points": ["string", "..."],
+  "risk": "high | medium | low"
+}</pre>
+
+    <div class="ad-wrap"><p class="ad-label">Advertisement</p><div class="ad-slot ad-slot--inline" data-ad-slot="article-inline" data-ad-format="in-article 336x280"><span class="ad-ph">Ad space<small>In-article ad, 336 × 280</small></span><!-- ADSENSE: in-article block --></div></div>
+
+    <h3>3. Separate instructions and data with tags</h3>
+    <p>Wrap the content to process in tags such as <code class="inline">&lt;data&gt;</code>. That way Claude can tell what it must obey from what it must analyse, and you reduce errors when the input text contains sentences that look like orders.</p>
+
+    <h3>4. Add an example</h3>
+    <p>A complete input and output example fixes the format better than any description. Include one that covers a normal case and, if you can, another with incomplete data.</p>
+
+    <h3>5. Validate with Python and retry</h3>
+    <p>Never take the response for granted without checking it. Parse the JSON, verify the fields and, if it fails, send the error back to Claude so it can correct it.</p>
+<pre data-no-i18n>import json
+
+def parse(response: str) -> dict:
+    data = json.loads(response)
+    missing = {"summary", "key_points", "risk"} - data.keys()
+    if missing:
+        raise ValueError(f"Missing fields: {missing}")
+    return data</pre>
+    <p>Limit retries to two or three. If the prompt is well designed, almost every response will pass on the first attempt.</p>
+
+    <h3>In summary</h3>
+    <p>A clear role, an explicit schema, separated data, one example and validation in code. With those five pieces, Claude's output stops being text and becomes data you can rely on.</p>
+  

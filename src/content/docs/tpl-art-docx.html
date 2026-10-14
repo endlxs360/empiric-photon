@@ -1,0 +1,36 @@
+    <p class="meta">Published September 29, 2026. Reading time: 10 minutes.</p>
+    <p>Generating a Word file from Python is easy. Generating one that looks professional and does not break on every revision requires a few design decisions from the start. These are the ones that make the biggest difference with the <code class="inline">python-docx</code> library.</p>
+
+    <h3>Start from a template, not an empty document</h3>
+    <p>Create a <code class="inline">.docx</code> template with your company's margins, typography, heading styles and header. Your script only fills in content, and the design stays out of the code.</p>
+
+    <h3>Use named styles, not manual formatting</h3>
+    <p>Apply "Heading 1", "Normal" or "Quote" instead of changing sizes or bold paragraph by paragraph. If the corporate image changes tomorrow, you edit the template and every document updates.</p>
+
+    <div class="ad-wrap"><p class="ad-label">Advertisement</p><div class="ad-slot ad-slot--inline" data-ad-slot="article-inline" data-ad-format="in-article 336x280"><span class="ad-ph">Ad space<small>In-article ad, 336 × 280</small></span><!-- ADSENSE: in-article block --></div></div>
+
+    <h3>Tables and lists</h3>
+    <p>Define the table with a style from the template and fill it from your data. That way the number of rows can vary without touching the design.</p>
+<pre data-no-i18n>from docx import Document
+
+doc = Document("corporate_template.docx")
+doc.add_heading("Quarterly report", level=1)
+doc.add_paragraph("Executive summary generated from data.")
+
+table = doc.add_table(rows=1, cols=3, style="Table Grid")
+for cell, text in zip(table.rows[0].cells, ["Month", "Sales", "Change"]):
+    cell.text = text
+
+for month, sales, change in data:
+    row = table.add_row().cells
+    row[0].text, row[1].text, row[2].text = month, str(sales), change
+
+doc.save("report_q3.docx")</pre>
+    <p>The <code class="inline">"Table Grid"</code> style exists in the default template. If you use your own, check that it contains the style you name.</p>
+
+    <h3>Headers, footers and fields</h3>
+    <p>Headers and footers are edited through <code class="inline">doc.sections[0].header</code> and <code class="inline">footer</code>. Dynamic fields, such as page numbering, require inserting XML. Wrap that code in your own function and reuse it.</p>
+
+    <h3>Validate the result</h3>
+    <p>Open the file in Word and in LibreOffice, and convert it to PDF for a quick visual check. A couple of test documents with extreme data (very long texts, empty tables) catch almost every layout problem.</p>
+  

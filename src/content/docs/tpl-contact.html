@@ -1,0 +1,68 @@
+    <p>Tell us which document process you want to automate and we will reply with an indicative proposal. You can also reach us on <a href="{{X_URL}}" target="_blank" rel="noopener noreferrer">X</a> or browse the <a href="{{GUMROAD_URL}}" target="_blank" rel="noopener noreferrer">Gumroad store</a>.</p>
+    <p>Direct email: <a data-email href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a></p>
+
+    <form data-contact class="mt-5">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for="c-nombre">Full name *</label>
+          <input id="c-nombre" name="nombre" type="text" required autocomplete="name" class="field" placeholder="Your name">
+        </div>
+        <div>
+          <label for="c-email">Work email *</label>
+          <input id="c-email" name="email" type="email" required autocomplete="email" class="field" placeholder="you@company.com">
+        </div>
+        <div>
+          <label for="c-empresa">Company *</label>
+          <input id="c-empresa" name="empresa" type="text" required autocomplete="organization" class="field" placeholder="Company name">
+        </div>
+        <div>
+          <label for="c-cargo">Job title</label>
+          <input id="c-cargo" name="cargo" type="text" autocomplete="organization-title" class="field" placeholder="Your role">
+        </div>
+        <div>
+          <label for="c-interes">What are you interested in</label>
+          <select id="c-interes" name="interes" class="field">
+            <option>ClipScript AI™</option>
+            <option>Estate Dossier AI™</option>
+            <option>Custom B2B Workflows</option>
+            <option>Other enquiry</option>
+          </select>
+        </div>
+        <div>
+          <label for="c-volumen">Estimated document volume</label>
+          <select id="c-volumen" name="volumen" class="field">
+            <option>Fewer than 20 per month</option>
+            <option>20 to 50 per month</option>
+            <option>50 to 100 per month</option>
+            <option>More than 100 per month</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label for="c-mensaje">Message *</label>
+        <textarea id="c-mensaje" name="mensaje" rows="5" required class="field" placeholder="Describe the type of documents and how you produce them today"></textarea>
+      </div>
+
+      <details class="mt-4 rounded-lg border border-white/10 bg-ink/50 px-3 py-2">
+        <summary class="cursor-pointer text-sm text-slate-300">Basic data protection information</summary>
+        <ul>
+          <li><strong>Controller:</strong> Empiric Labs (Empiric Photon).</li>
+          <li><strong>Purpose:</strong> to answer your enquiry and, where relevant, prepare a proposal.</li>
+          <li><strong>Legal basis:</strong> your consent and any pre-contractual measures you request.</li>
+          <li><strong>Recipients:</strong> we do not share your data with third parties, except where legally required.</li>
+          <li><strong>Rights:</strong> access, rectification, erasure and others, by writing to the contact email.</li>
+        </ul>
+        <p class="meta">Full details are in the Privacy Policy, linked in the footer.</p>
+      </details>
+
+      <label style="display:flex;gap:.6rem;align-items:flex-start;margin:1rem 0 0;color:#C7D0E2;font-size:.875rem;">
+        <input type="checkbox" name="acepto" required style="margin-top:.2rem;width:1rem;height:1rem;accent-color:#00F2FE;">
+        <span>I have read the data protection information and agree to the processing of my data for this enquiry. *</span>
+      </label>
+
+      <button type="submit" class="btn-primary mt-5 inline-flex w-full items-center justify-center rounded-xl px-6 py-3 text-[15px] font-semibold sm:w-fit">Prepare message</button>
+      <p class="meta" style="margin-top:.75rem">When you click, your email app will open with the enquiry ready to send to {{CONTACT_EMAIL}}. Fields marked with an asterisk are required.</p>
+      <p data-sent class="hidden text-sm font-medium text-emerald-300" role="status">Enquiry prepared. Review it and send it from your email app.</p>
+    </form>
+  

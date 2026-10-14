@@ -1,0 +1,68 @@
+    <p>Cuéntanos qué proceso documental quieres automatizar y te responderemos con una propuesta orientativa. También puedes escribirnos por <a href="{{X_URL}}" target="_blank" rel="noopener noreferrer">X</a> o consultar la <a href="{{GUMROAD_URL}}" target="_blank" rel="noopener noreferrer">tienda en Gumroad</a>.</p>
+    <p>Correo directo: <a data-email href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a></p>
+
+    <form data-contact class="mt-5">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for="c-nombre">Nombre y apellidos *</label>
+          <input id="c-nombre" name="nombre" type="text" required autocomplete="name" class="field" placeholder="Tu nombre">
+        </div>
+        <div>
+          <label for="c-email">Correo corporativo *</label>
+          <input id="c-email" name="email" type="email" required autocomplete="email" class="field" placeholder="tu@empresa.com">
+        </div>
+        <div>
+          <label for="c-empresa">Empresa *</label>
+          <input id="c-empresa" name="empresa" type="text" required autocomplete="organization" class="field" placeholder="Nombre de la empresa">
+        </div>
+        <div>
+          <label for="c-cargo">Cargo</label>
+          <input id="c-cargo" name="cargo" type="text" autocomplete="organization-title" class="field" placeholder="Tu puesto">
+        </div>
+        <div>
+          <label for="c-interes">Qué te interesa</label>
+          <select id="c-interes" name="interes" class="field">
+            <option>ClipScript AI™</option>
+            <option>Estate Dossier AI™</option>
+            <option>Custom B2B Workflows</option>
+            <option>Otra consulta</option>
+          </select>
+        </div>
+        <div>
+          <label for="c-volumen">Volumen estimado de documentos</label>
+          <select id="c-volumen" name="volumen" class="field">
+            <option>Menos de 20 al mes</option>
+            <option>Entre 20 y 50 al mes</option>
+            <option>Entre 50 y 100 al mes</option>
+            <option>Más de 100 al mes</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label for="c-mensaje">Mensaje *</label>
+        <textarea id="c-mensaje" name="mensaje" rows="5" required class="field" placeholder="Describe el tipo de documentos y cómo los generas hoy"></textarea>
+      </div>
+
+      <details class="mt-4 rounded-lg border border-white/10 bg-ink/50 px-3 py-2">
+        <summary class="cursor-pointer text-sm text-slate-300">Información básica sobre protección de datos</summary>
+        <ul>
+          <li><strong>Responsable:</strong> Empiric Labs (Empiric Photon).</li>
+          <li><strong>Finalidad:</strong> responder a tu consulta y, si procede, preparar una propuesta.</li>
+          <li><strong>Base legal:</strong> tu consentimiento y las medidas precontractuales que solicites.</li>
+          <li><strong>Destinatarios:</strong> no cedemos tus datos a terceros, salvo obligación legal.</li>
+          <li><strong>Derechos:</strong> acceso, rectificación, supresión y otros, escribiendo al correo de contacto.</li>
+        </ul>
+        <p class="meta">Encontrarás el detalle completo en la Política de Privacidad, en el pie de página.</p>
+      </details>
+
+      <label style="display:flex;gap:.6rem;align-items:flex-start;margin:1rem 0 0;color:#C7D0E2;font-size:.875rem;">
+        <input type="checkbox" name="acepto" required style="margin-top:.2rem;width:1rem;height:1rem;accent-color:#00F2FE;">
+        <span>He leído la información sobre protección de datos y acepto el tratamiento de mis datos para esta consulta. *</span>
+      </label>
+
+      <button type="submit" class="btn-primary mt-5 inline-flex w-full items-center justify-center rounded-xl px-6 py-3 text-[15px] font-semibold sm:w-fit">Preparar mensaje</button>
+      <p class="meta" style="margin-top:.75rem">Al pulsar, se abrirá tu aplicación de correo con la consulta lista para enviar a {{CONTACT_EMAIL}}. Los campos con asterisco son obligatorios.</p>
+      <p data-sent class="hidden text-sm font-medium text-emerald-300" role="status">Consulta preparada. Revísala y envíala desde tu aplicación de correo.</p>
+    </form>
+  

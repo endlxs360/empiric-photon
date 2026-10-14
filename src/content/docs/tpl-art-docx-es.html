@@ -1,0 +1,36 @@
+    <p class="meta">Publicado el 29 de septiembre de 2026. Lectura: 10 minutos.</p>
+    <p>Generar un Word desde Python es fácil. Generar uno que se vea profesional y no se rompa en cada revisión exige algunas decisiones de diseño desde el principio. Estas son las que más diferencia marcan con la librería <code class="inline">python-docx</code>.</p>
+
+    <h3>Parte de una plantilla, no de un documento vacío</h3>
+    <p>Crea una plantilla <code class="inline">.docx</code> con los márgenes, la tipografía, los estilos de título y la cabecera de tu empresa. Tu script solo rellena contenido, y el diseño queda fuera del código.</p>
+
+    <h3>Usa estilos con nombre, no formato manual</h3>
+    <p>Aplica «Título 1», «Normal» o «Cita» en lugar de cambiar tamaños o negritas párrafo a párrafo. Si mañana cambia la imagen corporativa, modificas la plantilla y todos los documentos se actualizan.</p>
+
+    <div class="ad-wrap"><p class="ad-label">Publicidad</p><div class="ad-slot ad-slot--inline" data-ad-slot="article-inline" data-ad-format="in-article 336x280"><span class="ad-ph">Espacio publicitario<small>Anuncio dentro del artículo, 336 × 280</small></span><!-- ADSENSE: bloque in-article --></div></div>
+
+    <h3>Tablas y listas</h3>
+    <p>Define la tabla con un estilo de la plantilla y rellénala desde tus datos. Así el número de filas puede variar sin tocar el diseño.</p>
+<pre>from docx import Document
+
+doc = Document("plantilla_corporativa.docx")
+doc.add_heading("Informe trimestral", level=1)
+doc.add_paragraph("Resumen ejecutivo generado desde datos.")
+
+tabla = doc.add_table(rows=1, cols=3, style="Table Grid")
+for celda, texto in zip(tabla.rows[0].cells, ["Mes", "Ventas", "Variación"]):
+    celda.text = texto
+
+for mes, ventas, variacion in datos:
+    fila = tabla.add_row().cells
+    fila[0].text, fila[1].text, fila[2].text = mes, str(ventas), variacion
+
+doc.save("informe_q3.docx")</pre>
+    <p>El estilo <code class="inline">"Table Grid"</code> existe en la plantilla por defecto. Si usas la tuya, comprueba que contiene el estilo que nombras.</p>
+
+    <h3>Cabeceras, pies y campos</h3>
+    <p>Las cabeceras y pies se editan desde <code class="inline">doc.sections[0].header</code> y <code class="inline">footer</code>. Los campos dinámicos, como la numeración de página, requieren insertar XML. Encapsula ese código en una función propia y reutilízala.</p>
+
+    <h3>Valida el resultado</h3>
+    <p>Abre el archivo en Word y en LibreOffice, y conviértelo a PDF para una revisión visual rápida. Un par de documentos de prueba con datos extremos (textos muy largos, tablas vacías) detectan casi todos los problemas de maquetación.</p>
+  
