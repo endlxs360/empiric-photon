@@ -14,7 +14,7 @@
     "test": "node --test"
   },
   "dependencies": {
-    "lucide": "0.263.1",
+    "lucide-react": "^1.16.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
